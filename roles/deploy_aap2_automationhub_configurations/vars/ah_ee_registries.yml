@@ -1,0 +1,10 @@
+---
+
+ah_ee_registries:
+  - name: Red Hat Remote Registry
+    state: present
+    url: https://registry.redhat.io/my/registry
+    wait: false
+    sync: true
+
+...

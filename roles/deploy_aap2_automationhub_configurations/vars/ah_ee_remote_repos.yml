@@ -1,0 +1,21 @@
+--- 
+
+# As of this writing, the ability to add a "validated" repo to AH using 
+# the infra.ah_configuration.repository role is not available in this release
+# but the code is written to enable it quicky when released
+ah_repository_certified:
+  name: rh-certified
+  url: https://console.redhat.com/api/automation-hub/
+  token: "{{ redhat_sso_token }}"
+ah_repository_community:
+  name: community
+  url: https://galaxy.ansible.com/api/
+  requirements:
+    - name: community.general
+    - name: community.windows
+    - name: awx.awx
+    - name: community.postgresql
+# ah_repository_validated:
+#   name: rh-validated
+#   url: https://console.redhat.com/api/automation-hub/content/validated/
+#   token: "{{ redhat_sso_token }}"

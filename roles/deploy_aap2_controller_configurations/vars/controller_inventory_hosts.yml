@@ -1,0 +1,9 @@
+---
+
+controller_hosts:
+
+  - name: localhost
+    inventory: Localhost
+    enabled: true
+
+...

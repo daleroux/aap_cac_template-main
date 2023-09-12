@@ -1,0 +1,92 @@
+---
+
+controller_teams:
+
+  - name: BI_Admins
+    description: Business Intelligence Administrators
+    organization: BI
+    state: present
+
+  - name: BI_Operators
+    description: Business Intelligence Operators
+    organization: BI
+    state: present
+
+  - name: DevOps_Admins
+    description: DevOps Administrators
+    organization: DevOps
+    state: present
+
+  - name: DevOps_Operators
+    description: DevOps Operators
+    organization: DevOps
+    state: present
+
+  - name: IDM_Admins
+    description: Identity Management Administrators
+    organization: IDM
+    state: present
+
+  - name: IDM_Operators
+    description: Identity Management Operators
+    organization: IDM
+    state: present
+
+  - name: Middleware_Admins
+    description: Middleware Administrators
+    organization: Middleware
+    state: present
+
+  - name: Middleware_Operators
+    description: Middleware Operators
+    organization: Middleware
+    state: present
+
+  - name: Middleware_ReadOnly
+    description: Middleware ReadOnly
+    organization: Middleware
+    state: present
+
+  - name: WebApplications_Admins
+    description: WebApplications Administrators
+    organization: WebApplications
+    state: present
+
+  - name: WebApplications_Operators
+    description: WebApplications Operators
+    organization: WebApplications
+    state: present
+
+  - name: WebApplications_ReadOnly
+    description: WebApplications ReadOnly 
+    organization: WebApplications
+    state: present
+
+  - name: Windows_Admins
+    description: Windows Administrators
+    organization: Windows
+    state: present
+
+  - name: Windows_Operators
+    description: Windows Operators
+    organization: Windows
+    state: present
+
+  - name: "{{ controller_as_code_org }}_Admins"
+    description: "{{ controller_as_code_org }} Administrators"
+    organization: "{{ controller_as_code_org }}"
+    state: present
+
+  - name: "{{ controller_as_code_org }}_Operators"
+    description: "{{ controller_as_code_org }} Operators"
+    organization: "{{ controller_as_code_org }}"
+    state: present
+
+...
+
+
+
+
+
+
+

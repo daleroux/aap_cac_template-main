@@ -1,0 +1,17 @@
+---
+# defaults file for deploy_aap2_automationhub_configurations
+# NO PLAIN TEXT CREDENTIALS SHOULD GO IN THIS FILE
+# YOU CAN OVERRIDE CREDENTIAL VARIABLES BY CREATING A 
+# VAULTED SECRETS.YML IN THE VARS DIRECTORY.
+
+ah_host: automatiohub.example.com
+ah_eeupload_username: "{{ lookup('env','EEUPLOAD_USERNAME') }}"
+ah_eeupload_password: "{{ lookup('env', 'EEUPLOAD_PASSWORD') }}"
+ah_password: "{{ lookup('env', 'CONTROLLER_PASSWORD') }}"
+ah_username: "{{ lookup('env', 'CONTROLLER_USERNAME') }}"
+ah_validate_certs: false
+
+redhat_sso_password: "{{ lookup('env', 'REDHAT_SSO_PASSWORD') }}"
+redhat_sso_token: "{{ lookup('env', 'REDHAT_SSO_TOKEN') }}"
+redhat_sso_url: 'https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token'
+redhat_sso_username: "{{ lookup('env', 'REDHAT_SSO_USERNAME') }}"

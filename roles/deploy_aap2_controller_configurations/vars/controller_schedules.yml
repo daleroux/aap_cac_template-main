@@ -1,0 +1,10 @@
+---
+
+controller_schedules:
+
+  - name: RH Automation Hub Token Refresh
+    description: RH Automation Hub Token Refresh
+    unified_job_template: Refresh RH Automation Hub Token
+    rrule: "DTSTART:20191219T130551Z RRULE:FREQ=WEEKLY;INTERVAL=1;BYDAY=FR"
+
+... 

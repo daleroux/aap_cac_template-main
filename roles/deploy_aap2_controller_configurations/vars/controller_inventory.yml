@@ -1,0 +1,9 @@
+---
+
+controller_inventories:
+
+  - name: Localhost 
+    organization: "{{ controller_as_code_org }}"
+    description:  Localhost Inventory
+
+...

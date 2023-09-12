@@ -1,0 +1,58 @@
+---
+
+controller_organizations:
+
+  - name: Default
+    description: Default Organization
+      - Ansible Galaxy
+
+  - name: BI
+    description: Business Intelligence
+    galaxy_credentials:
+      - PAH RH Community
+      - PAH RH Certified
+      - PAH RH Validated
+
+  - name: DevOps
+    description: Devops 
+    galaxy_credentials:
+      - PAH RH Community
+      - PAH RH Certified
+      - PAH RH Validated
+
+  - name: IDM
+    description: Identity Management
+    galaxy_credentials:
+      - PAH RH Community
+      - PAH RH Certified
+      - PAH RH Validated
+
+  - name: Middleware
+    description: Middleware
+    galaxy_credentials:
+      - PAH RH Community
+      - PAH RH Certified
+      - PAH RH Validated
+
+  - name: WebApplications
+    description: Web Applications
+    galaxy_credentials:
+      - PAH RH Community
+      - PAH RH Certified
+      - PAH RH Validated
+
+  - name: Windows
+    description: Windows Server Managment
+    galaxy_credentials:
+      - PAH RH Community
+      - PAH RH Certified
+      - PAH RH Validated
+
+  - name: "{{ controller_as_code_org }}"
+    description: Unix Server Managment
+    galaxy_credentials:
+      - PAH RH Community
+      - PAH RH Certified
+      - PAH RH Validated
+
+...

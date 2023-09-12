@@ -1,0 +1,13 @@
+---
+
+controller_templates:
+
+- name: Refresh RH Automation Hub Token
+  job_type: run
+  inventory: Localhost
+  project: AAP2x_IBC_Controller_as_Code
+  playbook: automation_hub_token_refresh.yml
+  credentials:
+    - Red Hat Automation Hub
+
+...

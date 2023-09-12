@@ -1,0 +1,57 @@
+---
+controller_roles:
+
+  - team: BI_Admins
+    organization: BI
+    roles: "{{ controller_roles_admin }}"
+  - team: BI_Operators
+    organization: BI
+    roles: "{{ controller_roles_operators }}"
+  
+  - team: DevOps_Admins
+    organization: DevOps
+    roles: "{{ controller_roles_admin }}"
+  - team: DevOps_Operators
+    organization: DevOps
+    roles: "{{ controller_roles_operators }}"
+
+  - team: IDM_Admins
+    organization: IDM
+    roles: "{{ controller_roles_admin }}"
+  - team: IDM_Operators
+    organization: IDM
+    roles: "{{ controller_roles_operators }}"
+
+  - team: Middleware_Admins
+    organization: Middleware
+    roles: "{{ controller_roles_admin }}"
+  - team: Middleware_Operators
+    organization: Middleware
+    roles: "{{ controller_roles_operators }}"
+  - team: Middleware_ReadOnly
+    organization: Middleware
+    roles: "{{ controller_roles_readonly }}"
+
+  - team: WebApplications_Admins
+    organization: WebApplications
+    roles: "{{ controller_roles_admin }}"
+  - team: WebApplications_Operators
+    organization: WebApplications
+    roles: "{{ controller_roles_operators }}"
+  - team: WebApplications_ReadOnly
+    organization: WebApplications
+    roles: "{{ controller_roles_readonly }}"
+
+  - team: Windows_Admins
+    organization: Windows
+    roles: "{{ controller_roles_admin }}"
+  - team: Windows_Operators
+    organization: Windows
+    roles: "{{ controller_roles_operators }}"
+
+  - team: Unix_Admins
+    organization: Unix
+    roles: "{{ controller_roles_admin }}"
+  - team: Unix_Operators
+    organization: Unix
+    roles: "{{ controller_roles_operators }}"

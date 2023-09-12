@@ -1,0 +1,14 @@
+---
+
+controller_projects:
+
+  - name: AAP2x_IBC_Controller_as_Code
+    organization: "{{ controller_as_code_org }}"
+    scm_type: git
+    scm_branch: devel
+    scm_update_on_launch: true
+    scm_url: "{{ controller_as_code_repository }}"
+    credential: Controller as Code Repository Credentials
+    update_project: true
+
+...

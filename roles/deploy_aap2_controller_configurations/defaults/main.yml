@@ -1,0 +1,172 @@
+---
+# defaults file for deploy_aap2_controller_configurations
+# NO PLAIN TEXT CREDENTIALS SHOULD GO IN THIS FILE
+# YOU CAN OVERRIDE CREDENTIAL VARIABLES BY CREATING A 
+# VAULTED SECRETS.YML IN THE VARS DIRECTORY.
+
+auth_ldap_base_dn: 'DC=example,DC=com'
+auth_ldap_bind_dn: 'CN=ldap_bind_svc_account,OU=foo,OU=bar,DC=example,DC=com'
+auth_ldap_bind_password: "{{ lookup('env', 'AUTH_LDAP_BIND_PASSWORD') }}"
+auth_ldap_group_type: ActiveDirectoryGroupType
+auth_ldap_server_uri: 'ldap://example.com:389'
+auth_ldap_start_tls: 'false'
+auth_ldap_org_map: 
+  BI: 
+    admins: 'CN=bi_admins,OU=foo,OU=bar,DC=example,DC=com'
+    remove_users: false
+    remove_admins: false
+    users: 
+      - 'CN=bi_operators,OU=foo,OU=bar,DC=example,DC=com'
+  DevOps:
+    admins: 'CN=devops_admins,OU=foo,OU=bar,DC=example,DC=com'
+    remove_users: false
+    remove_admins: false
+    users: 
+      - 'CN=devops_operators,OU=foo,OU=bar,DC=example,DC=com'
+  IDM:
+    admins: 'CN=idm_admins,OU=foo,OU=bar,DC=example,DC=com'
+    remove_users: false
+    remove_admins: false
+    users: 
+      - 'CN=idm_operators,OU=foo,OU=bar,DC=example,DC=com'
+  Middleware:
+    admins: 'CN=middleware_admins,OU=foo,OU=bar,DC=example,DC=com'
+    remove_users: false
+    remove_admins: false
+    users: 
+      - 'CN=middleware_operators,OU=foo,OU=bar,DC=example,DC=com'
+      - 'CN=middleware_readonly,OU=foo,OU=bar,DC=example,DC=com'
+  WebApplications:
+    admins: 'CN=webapplications_admins,OU=foo,OU=bar,DC=example,DC=com'
+    remove_users: false
+    remove_admins: false
+    users: 
+      - 'CN=webapplications_operators,OU=foo,OU=bar,DC=example,DC=com'
+      - 'CN=webapplications_readonly,OU=foo,OU=bar,DC=example,DC=com'
+  Windows:
+    admins: 'CN=windows_admins,OU=foo,OU=bar,DC=example,DC=com'
+    remove_users: false
+    remove_admins: false
+    users: 
+      - 'CN=windows_operators,OU=foo,OU=bar,DC=example,DC=com'
+  Unix:
+    admins: 'CN=unix_admins,OU=foo,OU=bar,DC=example,DC=com'
+    remove_users: false
+    remove_admins: false
+    users: 
+      - 'CN=unix_operators,OU=foo,OU=bar,DC=example,DC=com'
+
+auth_ldap_team_map: 
+  BI_Admins:
+    users: 'CN=bi_admins,OU=foo,OU=bar,DC=example,DC=com'
+    organization: BI
+    remove: false
+  BI_Operators:
+    users: 'CN=bi_operators,OU=foo,OU=bar,DC=example,DC=com'
+    organization: BI
+    remove: false
+  DevOps_Admins:
+    users: 'CN=devops_admins,OU=foo,OU=bar,DC=example,DC=com'
+    organization: DevOps
+    remove: false
+  DevOps_Operators:
+    users: 'CN=devops_operators,OU=foo,OU=bar,DC=example,DC=com'
+    organization: DevOps
+    remove: false
+  IDM_Admins:
+    users: 'CN=idm_admins,OU=foo,OU=bar,DC=example,DC=com'
+    organization: IDM
+    remove: false
+  IDM_Operators:
+    users: 'CN=idm_operators,OU=foo,OU=bar,DC=example,DC=com'
+    organization: IDM
+    remove: false
+  Middleware_Admins:
+    users: 'CN=middleware_admins,OU=foo,OU=bar,DC=example,DC=com'
+    organization: Middleware
+    remove: false
+  Middleware_Operators:
+    users: 'CN=middleware_operators,OU=foo,OU=bar,DC=example,DC=com'
+    organization: Middleware
+    remove: false
+  Middleware_ReadOnly:
+    users: 'CN=middleware_readonly,OU=foo,OU=bar,DC=example,DC=com'
+    organization: Middleware
+    remove: false
+  WebApplications_Admins:
+    users: 'CN=webapplications_admins,OU=foo,OU=bar,DC=example,DC=com'
+    organization: WebApplications
+    remove: false
+  WebApplication_Operators:
+    users: 'CN=webapplications_operators,OU=foo,OU=bar,DC=example,DC=com'
+    organization: Middleware
+    remove: false
+  WebApplication_ReadOnly:
+    users: 'CN=webapplications_readonly,OU=foo,OU=bar,DC=example,DC=com'
+    organization: Windows
+    remove: false
+  Windows_Admins:
+    users: 'CN=windows_admins,OU=foo,OU=bar,DC=example,DC=com'
+    organization: Windows
+    remove: false
+  Windows_Operators:
+    users: 'CN=windows_operators,OU=foo,OU=bar,DC=example,DC=com'
+    organization: Windows
+    remove: false
+  Unix_Admins:
+    users: 'CN=unix_admins,OU=foo,OU=bar,DC=example,DC=com'
+    organization: Unix
+    remove: false
+  Unix_Operators:
+    users: 'CN=unix_operators,OU=foo,OU=bar,DC=example,DC=com'
+    organization: Unix
+    remove: false
+
+awx_ansible_callback_plugins: 
+  - timer
+  - ansible.posix.profile_tasks
+
+controller_as_code_repository: 'ssh://git@gitrepo.example.com/aap2x_controller_as_code.git'
+controller_as_code_org: Unix
+
+controller_roles_admin:
+  - execute
+  - inventory_admin
+  - workflow_admin
+  - job_template_admin
+  - auditor
+  - project_admin
+  - credential_admin
+  - notification_admin
+  - read
+controller_roles_operators:
+  - read
+  - execute
+controller_roles_readonly:
+  - read
+controller_setting_max_forks: '200'
+controller_setting_galaxy_ignore_certs: 'true'
+controller_setting_awx_collections_enabled: 'true'
+
+controller_hostname: controller.example.com
+controller_password: "{{ lookup('env', 'CONTROLLER_PASSWORD') }}"
+controller_username: "{{ lookup('env', 'CONTROLLER_USERNAME') }}"
+controller_validate_certs: false
+
+git_repo_private_key: "{{ lookup('env', 'GIT_REPO_PRIVATE_KEY') }}"
+git_repo_usernam: git
+
+pah_host: automationhub.example.com
+pah_host_url: "{{ 'https://' + pah_host  }}"
+pah_galaxy_url: "{{ pah_host_url + '/api/galaxy/content/' }}"
+pah_password: "{{ lookup('env', 'PAH_PASSWORD') }}"
+pah_rh_community_url: "{{ pah_galaxy_url + 'community/' }}"
+pah_rh_certified_url: "{{ pah_galaxy_url + 'rh-certified/' }}"
+pah_rh_validated_url: "{{ pah_galaxy_url + 'validated/' }}"
+pah_token: "{{ lookup('env', 'PAH_TOKEN') }}"
+pah_username: admin
+
+redhat_sso_password: "{{ lookup('env', 'REDHAT_SSO_PASSWORD') }}"
+redhat_sso_token: "{{ lookup('env', 'REDHAT_SSO_TOKEN') }}"
+redhat_sso_url: 'https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token'
+redhat_sso_username: "{{ lookup('env', 'REDHAT_SSO_USERNAME') }}"

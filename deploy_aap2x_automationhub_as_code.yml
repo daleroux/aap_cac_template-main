@@ -1,0 +1,13 @@
+---
+- name: Deploy Ansible Automation Platform Automation Hub as Code
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  become: false
+  tasks:
+
+    - name: Deploy automation hub base settings
+      ansible.builtin.include_role:
+        name: deploy_aap2_automationhub_configurations
+  
+...

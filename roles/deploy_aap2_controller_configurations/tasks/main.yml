@@ -1,0 +1,78 @@
+---
+# tasks file for deploy_aap2_controller_configurations
+- name: Include controller specific variables
+  ansible.builtin.include_vars: 
+    dir: vars
+    extensions: ['yml']
+
+# Add assertion here
+# - name: Assert controller vars are defined
+
+- name: Deploy Controller Settings 
+  ansible.builtin.include_role:
+    name: infra.controller_configuration.settings
+  when: controller_settings is defined
+
+- name: Deploy Controller Credential Types
+  ansible.builtin.include_role:
+    name: infra.controller_configuration.credential_types
+  when: controller_credential_types is defined
+
+- name: Deploy Controller Organizations 
+  ansible.builtin.include_role:
+    name: infra.controller_configuration.organizations
+  vars:
+    controller_organizations:
+      - name: "{{ controller_as_code_org }}"
+        description: "{{ controller_as_code_org }} Server Managment"
+
+- name: Deploy Controller Credentials
+  ansible.builtin.include_role:
+    name: infra.controller_configuration.credentials
+  when: controller_credentials is defined
+
+- name: Deploy Controller Organizations 
+  ansible.builtin.include_role:
+    name: infra.controller_configuration.organizations
+  when: controller_organizations is defined
+
+- name: Deploy Controller Teams
+  ansible.builtin.include_role:
+    name: infra.controller_configuration.teams
+  when:
+    - controller_teams is defined
+
+- name: Deploy Controller Required Projects
+  ansible.builtin.include_role:
+    name: infra.controller_configuration.projects
+  vars:
+    controller_configuration_async_delay: 10
+  when: controller_projects is defined
+
+- name: Deploy a localhost inventory
+  ansible.builtin.include_role:
+    name: infra.controller_configuration.inventories
+  when: controller_inventories is defined
+
+- name: Add a host to the localhost inventory
+  ansible.builtin.include_role:
+    name: infra.controller_configuration.hosts
+  when: controller_hosts is defined
+
+- name: Deploy Controller Job Templates
+  ansible.builtin.include_role:
+    name: infra.controller_configuration.job_templates
+  when: controller_templates is defined
+
+- name: Deploy Controller Schedules 
+  ansible.builtin.include_role:
+    name: infra.controller_configuration.schedules
+  when:
+    - controller_schedules is defined
+
+- name: Deploy Controller roles
+  ansible.builtin.include_role:
+    name: infra.controller_configuration.roles
+  when: controller_roles is defined
+
+...

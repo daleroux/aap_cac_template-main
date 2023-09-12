@@ -1,0 +1,11 @@
+---
+
+ah_group_roles:
+  - state: present
+    groups:
+      - EE_Uploads
+    role_list:
+      - roles:
+          - galaxy.execution_environment_publisher
+        
+...

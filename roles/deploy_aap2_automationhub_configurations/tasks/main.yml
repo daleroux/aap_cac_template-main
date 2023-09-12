@@ -1,0 +1,51 @@
+---
+# tasks file for deploy_aap2_automation_configurations
+
+- name: Include controller specific variables
+  ansible.builtin.include_vars: 
+    dir: vars
+    extensions: ['yml']
+
+- name: Create the rh-certified and communtiy repositories
+  ansible.builtin.include_role: 
+    name: infra.ah_configuration.repository 
+  when: ah_repository_certified is defined or 
+        ah_repository_community is defined # or
+    #   ah_repository_validated is defined
+
+- name: Sync the rh-certified and communtiy repositories
+  ansible.builtin.include_role: 
+    name: infra.ah_configuration.repository_sync
+  when: ah_repository_certified is defined or 
+        ah_repository_community is defined # or
+    #   ah_repository_validated is defined
+
+- name: Add a remote registry to Private Automation Hub
+  ansible.builtin.include_role:
+    name: infra.ah_configuration.ee_registry
+  vars:
+    username: "{{ redhat_sso_username }}"
+    password: "{{ redhat_sso_passwor }}"
+  when: ah_ee_registries is defined
+
+- name: Sync Red Hat remote container registry
+  ansible.builtin.include_role:
+    name: infra.ah_configuration.ee_registry_sync
+  when: ah_ee_registries is defined
+
+- name: Add the EE_Uploads group
+  ansible.builtin.include_role:
+    name: infra.ah_configuration.group
+  when: ah_groups is defined
+
+- name: Add the EE publishing role to the EE_Uploads group
+  ansible.builtin.include_role:
+    name: infra.ah_configuration.group_roles
+  when: ah_groups is defined
+
+- name: Add the eeuploader user
+  ansible.builtin.include_role:
+    name: infra.ah_configuration.user
+  when: ah_users is defined
+
+...

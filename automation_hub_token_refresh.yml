@@ -1,0 +1,23 @@
+---
+
+- name: Playbook to keep your RH Automattion Hub token from expiring
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+
+    - name: Refresh Red Hat Automation Hub Token
+      ansible.builtin.uri:
+        url: "{{ api_hostname }}"
+        method: POST
+        return_content: true
+        body_format: form-urlencoded
+        headers:
+          accept: application/json
+        body:
+          grant_type: refresh_token
+          client_id: cloud-services
+          refresh_token: "{{ api_token }}"
+      run_once: true
+
+...

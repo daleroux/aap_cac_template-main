@@ -1,0 +1,14 @@
+---
+
+ah_users:
+  - username: "{{ ah_eeupload_username }}"
+    password: "{{ ah_eeupload_password }}"
+    groups:
+      - 'EE_Uploads'
+    append: true
+    first_name: EE
+    last_name: Uploader
+    is_superuser: false
+    state: present
+
+...
